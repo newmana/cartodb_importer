@@ -1,6 +1,8 @@
 class ImportFile
   IMPORT_PATH = '/api/v1/imports'
   USER_PATH = '/user/'
+  MAX_RETRIES = 120
+  RETRY_DELAY = 0.5
 
   def initialize(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
     @subdomainless_urls = subdomainless_urls
@@ -30,20 +32,20 @@ class ImportFile
 
   def import(file_name)
     RestClient.post imports_url.to_s, :filename => File.new(file_name, 'rb')
-  rescue RestClient::ExceptionWithResponse => err
-    err.response
   end
 
   def status(import)
     RestClient.get import_status_url(import).to_s
-  rescue RestClient::ExceptionWithResponse => err
-    err.response
   end
 
   def wait_for_complete(import)
+    times = 0
     begin
-      status = ImportStatus.new.from_json(status(import).body)
-    end while status.state != "complete"
+      body = status(import).body
+      status = ImportStatus.new.from_json(body)
+      times++
+      sleep(RETRY_DELAY)
+    end while status.state != "complete" || times > MAX_RETRIES
     status
   end
 end
