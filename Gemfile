@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'backports'
+gem 'rest-client'
 
 group :development, :test do
   gem 'test-unit'
