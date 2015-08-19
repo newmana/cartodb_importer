@@ -2,25 +2,19 @@ GEM
   remote: https://rubygems.org/
   specs:
     colored (1.2)
-    domain_name (0.5.24)
-      unf (>= 0.0.5, < 1.0.0)
-    http-cookie (1.0.2)
-      domain_name (~> 0.5)
     metaclass (0.0.4)
-    mime-types (2.6.1)
+    mime-types (1.25.1)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
-    netrc (0.10.3)
+    multi_json (1.11.2)
     power_assert (0.2.4)
-    rest-client (1.8.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
+    representable (2.3.0)
+      uber (~> 0.0.7)
+    rest-client (1.6.9)
+      mime-types (~> 1.16)
     test-unit (3.1.3)
       power_assert
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.1)
+    uber (0.0.14)
 
 PLATFORMS
   ruby
@@ -28,6 +22,8 @@ PLATFORMS
 DEPENDENCIES
   colored
   mocha
+  multi_json
+  representable
   rest-client
   test-unit
 

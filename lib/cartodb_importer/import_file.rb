@@ -14,4 +14,9 @@ class ImportFile
     uri.to_s
   end
 
+  def self.import(url, file_name)
+    RestClient.post url, :filename => File.new(file_name, 'rb')
+  rescue RestClient::ExceptionWithResponse => err
+    err.response
+  end
 end
