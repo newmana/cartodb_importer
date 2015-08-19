@@ -1,4 +1,7 @@
 class ImportStatus < OpenStruct
+end
+
+class ImportStatusRepresenter < Representable::Decorator
   include Representable::JSON
 
   property :id

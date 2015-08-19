@@ -42,7 +42,8 @@ class ImportFile
     times = 0
     begin
       body = status(import).body
-      status = ImportStatus.new.from_json(body)
+      status = ImportStatus.new
+      status = ImportStatusRepresenter.new(status).from_json(body)
       times++
       sleep(RETRY_DELAY)
     end while status.state != "complete" || times > MAX_RETRIES
