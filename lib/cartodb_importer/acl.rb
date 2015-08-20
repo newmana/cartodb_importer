@@ -7,8 +7,7 @@ module CartodbImporter
     include Representable::JSON
 
     property :type
-    # property :entity, class: Owner, decorater: OwnerRepresenter
-    # collection :entity, class: Owner, decorator: OwnerRepresenter
+    property :entity, class: Owner, decorator: OwnerRepresenter
     property :access
   end
 end
