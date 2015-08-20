@@ -5,8 +5,8 @@ module CartodbImporter
     MAX_RETRIES = 120
     RETRY_DELAY = 0.5
 
-    def initialize(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
-      @url_gen = UrlGenerator.new(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
+    def initialize(url_gen)
+      @url_gen = url_gen
     end
 
     def imports_url

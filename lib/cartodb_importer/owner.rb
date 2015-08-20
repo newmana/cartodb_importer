@@ -1,6 +1,9 @@
 module CartodbImporter
 
   class Owner < OpenStruct
+  end
+
+  class OwnerRepresenter < Representable::Decorator
     include Representable::JSON
 
     property :id

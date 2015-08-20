@@ -17,7 +17,7 @@ module CartodbImporter
     property :stats
     property :created_at
     property :updated_at
-    property :permission, class: Permission
+    property :permission, class: Permission, decorator: PermissionRepresenter
     property :locked
     property :source
     property :title
@@ -30,7 +30,7 @@ module CartodbImporter
     property :next_id
     hash :transition_options
     property :active_children
-    property :table, class: Table
+    property :table, class: Table, decorator: TableRepresenter
     property :external_source
     property :synchronization
     collection :children

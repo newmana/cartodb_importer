@@ -10,7 +10,7 @@ module CartodbImporter
     property :description
     property :display_name
     property :name
-    property :owner, class: Owner
+    property :owner, class: Owner, decorator: OwnerRepresenter
     property :quota_in_bytes
     property :geocoding_quota
     property :map_view_quota

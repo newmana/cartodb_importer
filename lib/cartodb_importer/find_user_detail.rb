@@ -3,8 +3,8 @@ module CartodbImporter
     ORGANIZATION_PATH = '/api/v1/org'
     USER_PATH = '/user/'
 
-    def initialize(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
-      @url_gen = UrlGenerator.new(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
+    def initialize(url_gen)
+      @url_gen = url_gen
     end
 
     def organization_url

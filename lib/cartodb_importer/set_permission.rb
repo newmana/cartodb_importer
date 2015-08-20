@@ -3,8 +3,8 @@ module CartodbImporter
   class SetPermission
     VIZ_PATH = '/api/v1/viz'
 
-    def initialize(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
-      @url_gen = UrlGenerator.new(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
+    def initialize(url_gen)
+      @url_gen = url_gen
     end
 
     def visualization_url
@@ -20,6 +20,17 @@ module CartodbImporter
 
     def table
       RestClient.get table_url.to_s
+    end
+
+    def find_viz_by_name(name)
+      out = VisualizationsRepresenter.new(Visualizations.new).from_json(table.body)
+      out.visualizations.select { |v| v.name = name }.first
+    end
+
+    def set_viz_org_permission(name, permission)
+      viz = find_viz_by_name(name)
+      puts Permission.new({entity: {id: viz.permission.id, type: :vis}, acl: []})
+      viz.id + " " + viz.permission.id
     end
   end
 end
