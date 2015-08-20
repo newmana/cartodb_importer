@@ -1,6 +1,6 @@
 require '../test_helper'
 
-module CartodbImport
+module CartodbImporter
 
   class SetPermissionTest < Test::Unit::TestCase
     API_KEY = (1..40).inject('') { |s, _| s + 'f' }

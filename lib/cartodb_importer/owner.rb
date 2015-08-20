@@ -1,4 +1,4 @@
-module CartodbImport
+module CartodbImporter
 
   class Owner < OpenStruct
     include Representable::JSON

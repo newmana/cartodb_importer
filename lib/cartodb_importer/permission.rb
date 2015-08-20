@@ -1,4 +1,4 @@
-module CartodbImport
+module CartodbImporter
 
   class Permission < OpenStruct
     include Representable::JSON

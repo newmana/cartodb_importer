@@ -1,29 +1,16 @@
-module CartodbImport
+module CartodbImporter
 
   class ImportFile
     IMPORT_PATH = '/api/v1/imports'
-    USER_PATH = '/user/'
     MAX_RETRIES = 120
     RETRY_DELAY = 0.5
 
     def initialize(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
-      @subdomainless_urls = subdomainless_urls
-      @scheme = scheme
-      @session_domain = session_domain
-      @port = port
-      @user_name = user_name
-      @api_key = api_key
+      @url_gen = UrlGenerator.new(subdomainless_urls, scheme, session_domain, port, user_name, api_key)
     end
 
     def imports_url
-      if @subdomainless_urls
-        path = "#{USER_PATH}#{@user_name}#{IMPORT_PATH}"
-        domain = @session_domain
-      else
-        path = IMPORT_PATH
-        domain = "#{@user_name}.#{@session_domain}"
-      end
-      URI::HTTP.new(@scheme, nil, domain, @port, nil, path, nil, "api_key=#{@api_key}", nil)
+      @url_gen.url(IMPORT_PATH)
     end
 
     def import_status_url(import)

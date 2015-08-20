@@ -1,4 +1,4 @@
-module CartodbImport
+module CartodbImporter
 
   class Table < OpenStruct
     include Representable::JSON

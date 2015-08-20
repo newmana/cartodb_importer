@@ -1,10 +1,9 @@
-module CartodbImport
+module CartodbImporter
 
   class Import < OpenStruct
   end
 
   class ImportRepresenter < Representable::Decorator
-    include Representable::JSON
     include Representable::JSON
 
     property :item_queue_id
