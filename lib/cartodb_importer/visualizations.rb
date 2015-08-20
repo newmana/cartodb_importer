@@ -1,12 +1,15 @@
-class Visualizations < OpenStruct
-end
+module CartodbImport
 
-class VisualizationsRepresenter < Representable::Decorator
-  include Representable::JSON
+  class Visualizations < OpenStruct
+  end
 
-  collection :visualizations, :class => Visualization, :decorator => VisualizationRepresenter
-  property :total_entries
-  property :total_user_entries
-  property :total_likes
-  property :total_shared
+  class VisualizationsRepresenter < Representable::Decorator
+    include Representable::JSON
+
+    collection :visualizations, :class => Visualization, :decorator => VisualizationRepresenter
+    property :total_entries
+    property :total_user_entries
+    property :total_likes
+    property :total_shared
+  end
 end

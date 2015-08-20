@@ -1,3 +1,6 @@
-class ImportMapinfo
+module CartodbImport
 
+  class ImportMapinfo
+
+  end
 end

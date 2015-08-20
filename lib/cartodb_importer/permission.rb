@@ -1,10 +1,13 @@
-class Permission < OpenStruct
-  include Representable::JSON
+module CartodbImport
 
-  property :id
-  property :owner, class: Owner
-  property :entity, class: Entity
-  collection :acl
-  property :created_at
-  property :updated_at
+  class Permission < OpenStruct
+    include Representable::JSON
+
+    property :id
+    property :owner, class: Owner
+    property :entity, class: Entity
+    collection :acl
+    property :created_at
+    property :updated_at
+  end
 end

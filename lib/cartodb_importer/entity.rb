@@ -1,6 +1,9 @@
-class Entity < OpenStruct
-  include Representable::JSON
+module CartodbImport
 
-  property :id
-  property :type
+  class Entity < OpenStruct
+    include Representable::JSON
+
+    property :id
+    property :type
+  end
 end
