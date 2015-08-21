@@ -6,6 +6,7 @@ require 'representable/json/hash'
 require 'representable/json/collection'
 require 'representable/object'
 
+require_relative 'cartodb_importer/version'
 require_relative 'cartodb_importer/entity'
 require_relative 'cartodb_importer/find_user_detail'
 require_relative 'cartodb_importer/import'

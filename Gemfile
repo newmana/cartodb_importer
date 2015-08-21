@@ -9,3 +9,5 @@ group :development, :test do
   gem 'mocha'
   gem 'colored'
 end
+
+gemspec
