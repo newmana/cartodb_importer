@@ -39,10 +39,10 @@ module CartodbImporter
       user = FindUserDetail.new(@url_gen)
       org = user.organization
       viz = find_viz_by_name(name)
-      permission = Permission.new({ type: 'org', access: access, entity: Entity.new({ id: viz.permission.id, avatar_url: nil, username: org.name }) })
+      permission = Permission.new({ type: 'org', access: access, entity: Entity.new({ id: org.id, avatar_url: nil, username: org.name }) })
       p = UpdatePermission.new(entity: Entity.new({ id: viz.id, type: 'vis' }), acl: [permission])
       perm = UpdatePermissionRepresenter.new(p).to_json
-      RestClient.put permission_url(viz.permission.id).to_s, perm
+      RestClient.put permission_url(viz.permission.id).to_s, perm, {'Content-Type' => 'application/json'}
     end
   end
 end
