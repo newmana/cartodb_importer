@@ -31,12 +31,21 @@ module CartodbImporter
       times = 0
       begin
         body = status(import).body
-        status = ImportStatus.new
-        status = ImportStatusRepresenter.new(status).from_json(body)
+        status = ImportStatusRepresenter.new(ImportStatus.new).from_json(body)
         times++
         sleep(RETRY_DELAY)
       end while status.state != "complete" || times > MAX_RETRIES
       status
+    end
+
+    def upload_table_for_org(import)
+      status = wait_for_complete(import)
+      if status.state == 'complete'
+        SetPermission.new(@url_gen).set_table_org_permission(status.table_id, 'rw')
+        true
+      else
+        false
+      end
     end
   end
 end
