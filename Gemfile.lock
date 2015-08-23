@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    cartodb_importer (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -8,6 +13,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
     power_assert (0.2.4)
+    rake (10.4.2)
     representable (2.3.0)
       uber (~> 0.0.7)
     rest-client (1.6.9)
@@ -20,9 +26,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 1.10)
+  cartodb_importer!
   colored
   mocha
   multi_json
+  rake (~> 10.0)
   representable
   rest-client
   test-unit

@@ -1,4 +1,4 @@
-require '../test_helper'
+require_relative '../test_helper'
 
 module CartodbImporter
 
@@ -6,7 +6,7 @@ module CartodbImporter
     API_KEY = (1..40).inject('') { |s, _| s + 'f' }
 
     def test_organization_url
-      url_gen = new UrlGenerator(true, 'http', 'test.com', nil, 'suser', API_KEY)
+      url_gen = UrlGenerator.new(true, 'http', 'test.com', nil, 'suser', API_KEY)
       uri = FindUserDetail.new(url_gen).organization_url
       assert_equal('http://test.com/user/suser/api/v1/org?api_key=ffffffffffffffffffffffffffffffffffffffff', uri.to_s)
     end
