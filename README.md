@@ -1,7 +1,7 @@
 CartoDB Importer
 ===
 
-Depends on command line:
+Depends on the following binaries being available on command line:
 
 * 7Zip (7za) - http://www.7-zip.org/
 * gdal (ogr2ogr) - http://www.gdal.org/
