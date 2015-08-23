@@ -3,8 +3,8 @@ CartoDB Importer
 
 Depends on command line:
 
-* 7Zip (7za)
-* gdal (ogr2ogr)
+* 7Zip (7za) - http://www.7-zip.org/
+* gdal (ogr2ogr) - http://www.gdal.org/
 
 Sample Usage:
 
