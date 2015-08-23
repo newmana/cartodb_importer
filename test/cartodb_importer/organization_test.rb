@@ -6,8 +6,7 @@ module CartodbImporter
     API_KEY = (1..40).inject('') { |s, _| s + 'f' }
 
     def test_organization_url
-      url_gen = UrlGenerator.new(true, 'http', 'test.com', nil, 'suser', API_KEY)
-      uri = url_gen.url(Organization::PATH)
+      uri = URL_GEN.url(Organization::PATH)
       assert_equal('http://test.com/user/suser/api/v1/org?api_key=ffffffffffffffffffffffffffffffffffffffff', uri.to_s)
     end
   end
