@@ -23,4 +23,4 @@ Sample Usage:
 > i.import_for_org('/Users/xxx/upload', 'zones')
 ```
  
- 
+Alternatively, subdomain based URLs (e.g. xxx.localhost.lan) require `SUBDOMAINLESS_URLS` to be false. 
