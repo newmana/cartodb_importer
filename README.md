@@ -11,10 +11,7 @@ Sample Usage:
 `./bin/console`
 
 ```
-> HOST = 'localhost'
-> USER_NAME = 'xxx'
-> API_KEY = 'abc123'
-> URL_GEN = CartodbImporter::UrlGenerator.new(true, 'http', HOST, nil, USER_NAME, API_KEY)
+> URL_GEN = CartodbImporter::UrlGenerator.new(true, 'http', 'localhost', nil, 'xxx', 'abc123')
 > i = CartodbImporter::ImportShapefile(URL_GEN)
 > i.import_for_org('/Users/xxx/upload', 'zones')
 ```
