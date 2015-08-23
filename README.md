@@ -13,7 +13,7 @@ Sample Usage:
 ```
 > HOST = 'localhost'
 > USER_NAME = 'xxx'
-> PASSWORD = 'abc123'
+> API_KEY = 'abc123'
 > URL_GEN = CartodbImporter::UrlGenerator.new(true, 'http', HOST, nil, USER_NAME, API_KEY)
 > i = CartodbImporter::ImportShapefile(URL_GEN)
 > i.import_for_org('/Users/xxx/upload', 'zones')
