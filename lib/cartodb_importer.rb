@@ -9,7 +9,7 @@ require 'representable/object'
 
 require_relative 'cartodb_importer/version'
 require_relative 'cartodb_importer/entity'
-require_relative 'cartodb_importer/user_detail'
+require_relative 'cartodb_importer/user'
 require_relative 'cartodb_importer/import'
 require_relative 'cartodb_importer/import_status'
 require_relative 'cartodb_importer/import_file'

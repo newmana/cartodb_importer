@@ -1,5 +1,5 @@
 module CartodbImporter
-  class UserDetail
+  class User
 
     def initialize(url_gen)
       @url_gen = url_gen
