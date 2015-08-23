@@ -8,6 +8,7 @@ group :development, :test do
   gem 'test-unit'
   gem 'mocha'
   gem 'colored'
+  gem 'webmock'
 end
 
 gemspec

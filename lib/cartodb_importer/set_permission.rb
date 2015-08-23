@@ -42,7 +42,7 @@ module CartodbImporter
     end
 
     def set_table_org_permission(id, access)
-      user = FindUserDetail.new(@url_gen)
+      user = UserDetail.new(@url_gen)
       org = user.organization
       viz = find_viz_by_table_id(id)
       permission = Permission.new({ type: 'org', access: access, entity: Entity.new({ id: org.id, avatar_url: nil, username: org.name }) })
