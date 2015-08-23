@@ -1,5 +1,6 @@
 require 'json'
 require 'rest-client'
+require 'open3'
 require 'uri'
 require 'ostruct'
 require 'representable/json'
