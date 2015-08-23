@@ -1,6 +1,6 @@
 module CartodbImporter
   class Organization < OpenStruct
-    ORGANIZATION_PATH = '/api/v1/org'
+    PATH = '/api/v1/org'
   end
 
   class OrganizationRepresenter < Representable::Decorator

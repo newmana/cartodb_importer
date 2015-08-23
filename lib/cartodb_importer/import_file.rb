@@ -1,7 +1,6 @@
 module CartodbImporter
 
   class ImportFile
-    IMPORT_PATH = '/api/v1/imports'
     MAX_RETRIES = 120
     RETRY_DELAY = 0.5
 
@@ -10,7 +9,7 @@ module CartodbImporter
     end
 
     def imports_url
-      @url_gen.url(IMPORT_PATH)
+      @url_gen.url(Import::PATH)
     end
 
     def import_status_url(import)
@@ -20,7 +19,7 @@ module CartodbImporter
     end
 
     def import(file_name)
-      RestClient.post imports_url.to_s, :filename => File.new(file_name, 'rb')
+      RestClient.post imports_url.to_s, filename: File.new(file_name, 'rb')
     end
 
     def status(import)

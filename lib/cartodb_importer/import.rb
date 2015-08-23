@@ -1,6 +1,7 @@
 module CartodbImporter
 
   class Import < OpenStruct
+    PATH = '/api/v1/imports'
   end
 
   class ImportRepresenter < Representable::Decorator

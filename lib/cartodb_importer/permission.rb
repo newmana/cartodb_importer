@@ -1,6 +1,7 @@
 module CartodbImporter
 
   class Permission < OpenStruct
+    PATH = '/api/v1/perm'
   end
 
   class PermissionRepresenter < Representable::Decorator

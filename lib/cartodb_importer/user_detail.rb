@@ -6,7 +6,7 @@ module CartodbImporter
     end
 
     def organization
-      response = RestClient.get @url_gen.url(Organization::ORGANIZATION_PATH).to_s
+      response = RestClient.get @url_gen.url(Organization::PATH).to_s
       OrganizationRepresenter.new(Organization.new).from_json(response.body)
     end
   end

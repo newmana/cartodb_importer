@@ -1,19 +1,17 @@
 module CartodbImporter
 
   class SetPermission
-    VIZ_PATH = '/api/v1/viz'
-    PERM_PATH = '/api/v1/perm'
 
     def initialize(url_gen)
       @url_gen = url_gen
     end
 
     def visualization_url
-      @url_gen.url(VIZ_PATH)
+      @url_gen.url(Visualization::PATH)
     end
 
     def permission_url(id)
-      uri = @url_gen.url(PERM_PATH)
+      uri = @url_gen.url(Permission::PATH)
       uri.path += "/#{id}"
       uri
     end

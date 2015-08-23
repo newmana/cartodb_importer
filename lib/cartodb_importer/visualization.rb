@@ -1,6 +1,7 @@
 module CartodbImporter
 
   class Visualization < OpenStruct
+    PATH = '/api/v1/viz'
   end
 
   class VisualizationRepresenter < Representable::Decorator

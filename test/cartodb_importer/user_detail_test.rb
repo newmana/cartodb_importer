@@ -23,7 +23,7 @@ module CartodbImporter
     }
 
     def test_organization_url
-      stub_request(:any, URL_GEN.url(Organization::ORGANIZATION_PATH).to_s).
+      stub_request(:any, URL_GEN.url(Organization::PATH).to_s).
           to_return(body: TEST_DATA.to_json, status: 200)
       detail = UserDetail.new(URL_GEN)
       assert_equal('xxx', detail.organization.name)
