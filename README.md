@@ -1,7 +1,7 @@
 CartoDB Importer
 ===
 
-Uploads CSV, Shapefiles, and MapInfo files into CartoDB and makes available for all users within the organisation
+Uploads CSV, Shapefiles, and MapInfo files into CartoDB and makes them available for all users within the organisation
 to access.
 
 Depends on the following binaries being available on command line:
