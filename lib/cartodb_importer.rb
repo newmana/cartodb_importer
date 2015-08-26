@@ -8,6 +8,7 @@ require 'representable/json/hash'
 require 'representable/json/collection'
 require 'representable/object'
 
+require_relative 'cartodb_importer/case_insensitive_file'
 require_relative 'cartodb_importer/version'
 require_relative 'cartodb_importer/entity'
 require_relative 'cartodb_importer/user'

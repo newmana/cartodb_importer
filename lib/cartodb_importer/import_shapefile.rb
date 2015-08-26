@@ -1,6 +1,7 @@
 module CartodbImporter
 
   class ImportShapefile
+    include CaseInsensitiveFile
 
     REQUIRED_EXT = ['shp', 'shx', 'dbf', 'prj']
 
@@ -9,10 +10,10 @@ module CartodbImporter
     end
 
     def import_for_org(path, local_file_name, remote_name = local_file_name)
-      if REQUIRED_EXT.inject(true) {|c, e| c && File.exists?("#{path}/#{local_file_name}.#{e}") }
+      all_files = REQUIRED_EXT.map { |e| self.i_file_path("#{path}/#{local_file_name}.#{e}") }
+      if all_files.size == 4
         # Assume zip
-        files_to_zip = REQUIRED_EXT.map { |e| "#{path}/#{local_file_name}.#{e}" }
-        Open3.capture3('7za', 'a', zip_file(path, local_file_name), *files_to_zip)
+        Open3.capture3('7za', 'a', zip_file(path, local_file_name), *all_files)
         begin
           ImportFile.new(@url_gen).upload_table_for_org(zip_file(path, local_file_name), remote_name)
         ensure
