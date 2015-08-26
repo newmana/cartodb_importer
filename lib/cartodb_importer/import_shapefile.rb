@@ -13,7 +13,7 @@ module CartodbImporter
       all_files = REQUIRED_EXT.map { |e| self.i_file_path("#{path}/#{file_name}.#{e}") }
       if all_files.size == 4
         # Assume zip
-        Open3.capture3('7za', 'a', zip_file(path, local_file_name), *all_files)
+        Open3.capture3('7za', 'a', zip_file(path, file_name), *all_files)
         begin
           ImportFile.new(@url_gen).upload_table_for_org(zip_file(path, file_name))
         ensure
