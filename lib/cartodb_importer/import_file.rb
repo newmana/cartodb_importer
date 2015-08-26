@@ -44,9 +44,9 @@ module CartodbImporter
       begin
         body = status(import).body
         status = ImportStatusRepresenter.new(ImportStatus.new).from_json(body)
-        times++
+        times += 1
         sleep(RETRY_DELAY)
-      end while status.state != "complete" || times > MAX_RETRIES
+      end while status.state != 'complete' || status.state != 'failure' || times > MAX_RETRIES
       status
     end
 
