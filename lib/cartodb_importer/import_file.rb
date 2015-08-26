@@ -37,12 +37,14 @@ module CartodbImporter
       status
     end
 
-    def upload_table_for_org(file_name)
+    def upload_table_for_org(file_name, name=nil)
       response = import(file_name)
       import = ImportRepresenter.new(Import.new).from_json(response.body)
       status = wait_for_complete(import)
       if status.state == 'complete'
-        SetPermission.new(@url_gen).set_table_org_permission(status.table_id, 'rw')
+        perm = SetPermission.new(@url_gen)
+        perm.set_table_org_permission(status.table_id, 'rw')
+        perm.rename_table(status.table_id, name) if name && !name.empty?
         true
       else
         false

@@ -6,8 +6,10 @@ module CartodbImporter
       @url_gen = url_gen
     end
 
-    def visualization_url
-      @url_gen.url(Visualization::PATH)
+    def visualization_url(id = nil)
+      uri = @url_gen.url(Visualization::PATH)
+      uri.path += "/#{id}" if id && !id.empty?
+      uri
     end
 
     def permission_url(id)
@@ -19,7 +21,7 @@ module CartodbImporter
     def table_url
       uri = visualization_url
       query = CGI.parse(uri.query)
-      uri.query = URI.encode_www_form(query.merge({ types: 'table' }))
+      uri.query = URI.encode_www_form(query.merge({types: 'table'}))
       uri
     end
 
@@ -43,10 +45,17 @@ module CartodbImporter
       user = User.new(@url_gen)
       org = user.organization
       viz = find_viz_by_table_id(id)
-      permission = Permission.new({ type: 'org', access: access, entity: Entity.new({ id: org.id, avatar_url: nil, username: org.name }) })
-      p = UpdatePermission.new(entity: Entity.new({ id: viz.id, type: 'vis' }), acl: [permission])
+      permission = Permission.new({type: 'org', access: access, entity: Entity.new({id: org.id, avatar_url: nil, username: org.name})})
+      p = UpdatePermission.new(entity: Entity.new({id: viz.id, type: 'vis'}), acl: [permission])
       perm = UpdatePermissionRepresenter.new(p).to_json
       RestClient.put permission_url(viz.permission.id).to_s, perm, {'Content-Type' => 'application/json'}
+    end
+
+    def rename_table(id, name)
+      viz = find_viz_by_table_id(id)
+      viz.name = name
+      new_viz = VisualizationRepresenter.new(viz).to_json
+      RestClient.put visualization_url(viz.id).to_s, new_viz, {'Content-Type' => 'application/json'}
     end
   end
 end
