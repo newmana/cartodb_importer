@@ -18,8 +18,21 @@ module CartodbImporter
       uri
     end
 
-    def import(file_name)
-      RestClient.post imports_url.to_s, filename: File.new(file_name, 'rb')
+    def import(local_file_name, remote_name = local_file_name)
+      # remote filename should just be a different basename than local file name.
+      if local_file_name != remote_name
+        remote_name = "#{File.basename(remote_name, '.*')}#{File.extname(local_file_name)}"
+      end
+      request = RestClient::Request.new(
+        method: :post,
+        url: imports_url.to_s,
+        payload: {
+          multipart: true,
+          filename: remote_name,
+          file: File.new(local_file_name, 'rb')
+        }
+      )
+      request.execute
     end
 
     def status(import)
