@@ -50,8 +50,8 @@ module CartodbImporter
       status
     end
 
-    def upload_table_for_org(file_name)
-      response = import(file_name)
+    def upload_table_for_org(local_file_name, remote_name = local_file_name)
+      response = import(local_file_name, remote_name)
       import = ImportRepresenter.new(Import.new).from_json(response.body)
       status = wait_for_complete(import)
       if status.state == 'complete'
